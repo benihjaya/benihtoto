@@ -3,6 +3,9 @@
 
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -1838,6 +1841,1001 @@ button{
 }
 
 
+
+
+
+
+
+/* =========================================================
+   GAME POPULER - 2 BARIS x 10 GAME
+   GESER HORIZONTAL + PALANG MATI KIRI/KANAN
+========================================================= */
+
+.tabs{
+  gap:12px;
+  justify-content:space-between;
+}
+
+.tab{
+  flex:1;
+  text-align:center;
+  white-space:nowrap;
+  font-size:12px;
+}
+
+.popular-feed{
+  padding:0 0 100px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #051c41 0%,
+      #03142e 48%,
+      #020817 100%
+    );
+
+  color:#fff;
+  min-height:420px;
+}
+
+
+/* HEADER */
+
+.popular-page-head{
+  height:42px;
+
+  display:flex;
+  align-items:center;
+
+  gap:9px;
+
+  padding:0 12px;
+
+
+  color:#fff;
+
+  font-size:14px;
+  font-weight:1000;
+
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.15);
+}
+
+.popular-page-head .diamond{
+  color:#35ff54;
+  font-size:18px;
+  line-height:1;
+}
+
+
+/* ==============================================
+   WRAPPER SATU BARIS
+============================================== */
+
+.popular-section{
+  position:relative;
+
+  margin:0;
+
+  padding:
+    18px
+    0
+    7px;
+
+  overflow:hidden;
+}
+
+
+/* ==============================================
+   AREA TRACK TENGAH
+   Dibuat masuk agar kiri/kanan ada rongga tetap
+============================================== */
+
+.popular-track-shell{
+  position:relative;
+
+  margin:
+    0
+    18px;
+
+  overflow:hidden;
+}
+
+
+.popular-track{
+  display:flex;
+
+  gap:14px;
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  padding:
+    0
+    8px
+    5px;
+
+  scroll-snap-type:x proximity;
+
+  overscroll-behavior-x:contain;
+
+  -webkit-overflow-scrolling:touch;
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.popular-track::-webkit-scrollbar{
+  display:none;
+}
+
+
+/* ==============================================
+   PALANG MATI KIRI / KANAN
+============================================== */
+
+.popular-rail{
+  position:absolute;
+
+  z-index:20;
+
+  top:0;
+  bottom:0;
+
+  width:18px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0090ff,
+      #0b00a3
+    );
+
+  border-color:
+    rgba(43,124,255,.95);
+
+
+  box-shadow:
+    0 0 6px rgba(0,80,255,.15);
+}
+
+
+.popular-rail.left{
+  left:0;
+
+  border-width:
+    2px
+    0
+    2px
+    2px;
+}
+
+
+.popular-rail.right{
+  right:0;
+
+  border-width:
+    2px
+    2px
+    2px
+    0;
+}
+
+
+/* Panah berada di palang mati */
+
+.popular-arrow{
+  width:18px;
+  height:42px;
+
+  padding:0;
+
+  border:0;
+
+  background:transparent;
+
+  color:#fff;
+
+  font-size:24px;
+  font-weight:1000;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  text-shadow:
+    0 1px 3px rgba(0,0,0,.8);
+}
+
+
+/* ==============================================
+   KARTU GAME
+============================================== */
+
+.popular-card{
+  flex:
+    0
+    0
+    88px;
+
+  width:88px;
+  min-width:88px;
+
+  scroll-snap-align:start;
+
+  overflow:hidden;
+
+  border-radius:22px;
+
+  background:#5b1716;
+
+  border:0;
+
+  box-shadow:none;
+}
+
+
+.popular-image{
+border:4px solid #002bff;
+  position:relative;
+
+  width:88px;
+  height:88px;
+
+  overflow:hidden;
+
+  background:#002bff;
+
+  border-radius:
+    20px
+    20px
+    12px
+    12px;
+}
+
+
+.popular-image img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+}
+
+
+/* Placeholder */
+
+.popular-placeholder{
+  width:100%;
+  height:100%;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:3px;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(255,85,66,.34),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      #7a2420,
+      #300a0a
+    );
+
+  color:#fff;
+}
+
+
+.popular-placeholder strong{
+  font-size:22px;
+
+  color:#ffd5c7;
+
+  line-height:1;
+}
+
+
+.popular-placeholder small{
+  font-size:6px;
+
+  line-height:1.15;
+
+  color:#f0b7ad;
+
+  font-weight:900;
+}
+
+
+/* ==============================================
+   TOMBOL MAIN DI DALAM GAMBAR
+============================================== */
+
+.popular-main{
+  position:absolute;
+
+  z-index:5;
+
+  left:6px;
+  right:6px;
+  bottom:6px;
+
+  min-height:29px;
+
+  border:
+    2px solid #ff1e13;
+
+  border-radius:4px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:4px;
+
+  color:#fff;
+
+  font-size:10px;
+  font-weight:1000;
+
+  text-decoration:none;
+
+  background:
+    rgba(106,5,5,.92);
+
+  box-shadow:
+    0 0 5px rgba(255,0,0,.60);
+
+  transition:
+    transform .14s ease,
+    background .14s ease;
+}
+
+
+.popular-main i{
+  width:17px;
+  height:17px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#ff2118;
+
+  color:#fff;
+
+  font-size:8px;
+}
+
+
+.popular-main:hover{
+  background:#b30a05;
+}
+
+
+.popular-main:active{
+  transform:scale(.96);
+}
+
+
+
+
+
+/* =========================================================
+   INTERAKSI GAME POPULER - SESUAI RECORD
+   RINGAN UNTUK HP: TANPA GLOW / BLUR / FILTER
+========================================================= */
+
+.popular-image{
+  cursor:pointer;
+  position:relative;
+}
+
+/* lapisan gelap saat kartu aktif */
+.popular-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+
+  background:rgba(0,0,0,.62);
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:opacity .10s linear;
+}
+
+
+/* MAIN default tersembunyi */
+.popular-main{
+  position:absolute;
+
+  z-index:5;
+
+  left:50%;
+  top:50%;
+  right:auto;
+  bottom:auto;
+
+  width:72px;
+  min-height:30px;
+
+  transform:translate(-50%,-50%);
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  border:1px solid #b3322c;
+  border-radius:20px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+
+  color:#fff;
+
+  font-size:9px;
+  font-weight:1000;
+
+  text-decoration:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e62319 0%,
+      #b80d08 100%
+    );
+
+  box-shadow:none;
+  filter:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+
+  transition:opacity .10s linear;
+}
+
+
+/* ikon play bulat seperti record */
+.popular-main i{
+  width:17px;
+  height:17px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#f3352b;
+
+  color:#fff;
+
+  font-size:8px;
+
+  border:1px solid rgba(255,255,255,.55);
+}
+
+
+/* kartu aktif: gambar gelap */
+.popular-card.active .popular-image::after{
+  opacity:1;
+}
+
+
+/* kartu aktif: MAIN tampil */
+.popular-card.active .popular-main{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+
+  transform:translate(-50%,-50%);
+}
+
+
+/* benar-benar tanpa efek berat */
+.popular-card.active .popular-image,
+.popular-card .popular-image{
+  filter:none;
+  box-shadow:none;
+}
+
+.popular-card,
+.popular-card.active{
+  transform:none;
+}
+
+
+/* ==============================================
+   NAMA GAME
+============================================== */
+
+.popular-title{
+  height:27px;
+
+  padding:
+    6px
+    5px
+    7px;
+
+  display:block;
+
+  color:#fff;
+
+  text-align:center;
+
+  font-size:8px;
+  font-weight:1000;
+
+  line-height:1.15;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+
+/* Baris kedua */
+.popular-section + .popular-section{
+  padding-top:10px;
+}
+
+
+/* ==============================================
+   DESKTOP
+============================================== */
+
+@media (min-width:700px){
+
+  .popular-card{
+    flex-basis:94px;
+
+    width:94px;
+    min-width:94px;
+  }
+
+  .popular-image{
+    width:94px;
+    height:94px;
+  }
+
+  .popular-track{
+    gap:16px;
+  }
+
+}
+
+
+/* ==============================================
+   HP KECIL
+============================================== */
+
+@media (max-width:380px){
+
+  .popular-track-shell{
+    margin:
+      0
+      16px;
+  }
+
+  .popular-rail{
+    width:16px;
+  }
+
+  .popular-card{
+    flex-basis:82px;
+
+    width:82px;
+    min-width:82px;
+
+    border-radius:20px;
+  }
+
+  .popular-image{
+    width:82px;
+    height:82px;
+
+    border-radius:
+      18px
+      18px
+      11px
+      11px;
+  }
+
+  .popular-track{
+    gap:12px;
+
+    padding-left:6px;
+    padding-right:6px;
+  }
+
+  .popular-main{
+    left:5px;
+    right:5px;
+    bottom:5px;
+
+    min-height:27px;
+
+    font-size:9px;
+  }
+
+  .popular-title{
+    height:26px;
+
+    font-size:6.7px;
+  }
+
+  .popular-arrow{
+    font-size:22px;
+  }
+
+  .tabs{
+    gap:5px;
+
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  .tab{
+    font-size:10px;
+  }
+
+}
+
+
+/* =========================================================
+   NEW GAMES + JACKPOT GAMES
+   MODEL HORIZONTAL, RINGAN UNTUK HP
+========================================================= */
+
+.extra-games-wrap{
+  padding:10px 0 6px;
+}
+
+.extra-games-section{
+  padding:0 0 14px;
+}
+
+.extra-games-head{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:0 12px 8px;
+
+  color:#dcecff;
+}
+
+.extra-games-head .extra-icon{
+  flex:0 0 auto;
+  width:15px;
+  text-align:center;
+
+  color:#35ff9b;
+  font-size:12px;
+}
+
+.extra-games-head .extra-title{
+  flex:0 0 auto;
+
+  font-size:11px;
+  font-weight:900;
+  color:#dcecff;
+}
+
+.extra-games-head .extra-line{
+  flex:1;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,48,35,.85),
+      rgba(255,48,35,.18)
+    );
+}
+
+.extra-more{
+  flex:0 0 auto;
+
+  min-height:22px;
+  padding:0 10px;
+
+  border:0;
+  border-radius:999px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+
+  font-size:8px;
+  font-weight:900;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e42b20,
+      #a70c08
+    );
+
+  cursor:pointer;
+}
+
+.extra-track-shell{
+  position:relative;
+  margin:0 18px;
+  overflow:hidden;
+}
+
+.extra-track{
+  display:flex;
+  gap:14px;
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  padding:0 8px 4px;
+
+  scroll-snap-type:x proximity;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.extra-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* palang mati kiri kanan */
+.extra-rail{
+  position:absolute;
+  z-index:20;
+
+  top:0;
+  bottom:0;
+
+  width:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0090ff,
+      #0b00a3
+    );
+
+  border-color:rgba(43,124,255,.95);
+}
+
+.extra-rail.left{
+  left:0;
+  border-width:2px 0 2px 2px;
+}
+
+.extra-rail.right{
+  right:0;
+  border-width:2px 2px 2px 0;
+}
+
+.extra-arrow{
+  width:18px;
+  height:42px;
+
+  border:0;
+  padding:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:transparent;
+  color:#fff;
+
+  font-size:22px;
+  font-weight:1000;
+
+  cursor:pointer;
+}
+
+/* kartu ekstra memakai ukuran yang sama dengan Game Populer */
+.extra-track .popular-card{
+  flex:0 0 88px;
+  width:88px;
+  min-width:88px;
+}
+
+.extra-track .popular-image{
+  width:88px;
+  height:88px;
+}
+
+@media (min-width:700px){
+  .extra-track .popular-card{
+    flex-basis:94px;
+    width:94px;
+    min-width:94px;
+  }
+
+  .extra-track .popular-image{
+    width:94px;
+    height:94px;
+  }
+
+  .extra-track{
+    gap:16px;
+  }
+}
+
+@media (max-width:380px){
+  .extra-track-shell{
+    margin:0 16px;
+  }
+
+  .extra-rail{
+    width:16px;
+  }
+
+  .extra-track{
+    gap:12px;
+    padding-left:6px;
+    padding-right:6px;
+  }
+
+  .extra-track .popular-card{
+    flex-basis:82px;
+    width:82px;
+    min-width:82px;
+  }
+
+  .extra-track .popular-image{
+    width:82px;
+    height:82px;
+  }
+
+  .extra-games-head{
+    padding-left:9px;
+    padding-right:9px;
+  }
+
+  .extra-games-head .extra-title{
+    font-size:10px;
+  }
+
+  .extra-more{
+    padding:0 8px;
+    font-size:7px;
+  }
+}
+
+
+
+
+/* Tombol Lebih Banyak Game di bagian paling atas */
+.popular-page-head .popular-head-line{
+  flex:1;
+  height:1px;
+  margin-left:4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,48,35,.85),
+      rgba(255,48,35,.18)
+    );
+}
+.popular-page-head .popular-more{
+  flex:0 0 auto;
+  min-width:110px;
+  min-height:23px;
+  padding:0 10px;
+  border:0;
+  border-radius:999px;
+  color:#fff;
+  font-size:8px;
+  font-weight:900;
+  background:linear-gradient(180deg,#e7281c,#ad0b06);
+  box-shadow:none;
+}
+@media (max-width:380px){
+  .popular-page-head .popular-more{
+    min-width:96px;
+    padding:0 8px;
+    font-size:7px;
+  }
+}
+
+
+/* =========================================================
+   FRAME MERAH SETIAP BARIS GAME
+   Seperti contoh yang ditandai
+========================================================= */
+
+.popular-section{
+  margin:8px 8px 12px;
+  padding:14px 8px 10px;
+
+  border:1.5px solid #0090ff;
+  border-radius:18px;
+
+  overflow:hidden;
+}
+
+.popular-section .popular-rail.left{
+  left:0;
+}
+
+.popular-section .popular-rail.right{
+  right:0;
+}
+
+/* New Games & Jackpot Games: frame mengelilingi track */
+.extra-row{
+  position:relative;
+
+  margin:0 8px;
+
+  padding:8px 0;
+
+  border:1.5px solid #0090ff;
+  border-radius:18px;
+
+  overflow:hidden;
+}
+
+/* beri jarak judul dengan frame */
+.extra-games-head{
+  padding-left:14px;
+  padding-right:14px;
+}
+
+/* tombol lebih banyak game seperti contoh */
+.extra-more{
+  min-width:96px;
+  background:linear-gradient(180deg,#e7281c,#ad0b06);
+}
+
+/* jangan pakai shadow berat di HP */
+@media (max-width:699px){
+  .popular-section,
+  .extra-row{
+    box-shadow:none;
+  }
+}
+
+
 /* =========================================================
    BUKTI JP TAB + HORIZONTAL GALLERY
 ========================================================= */
@@ -2099,6 +3097,144 @@ button{
     -webkit-backdrop-filter:none !important;
   }
 }
+/* ===== FIX RONGGA DI BAWAH GAMBAR ===== */
+
+.popular-card{
+  background:#5b1716 !important;
+  overflow:hidden !important;
+}
+
+.popular-image{
+  position:relative !important;
+  z-index:2 !important;
+  margin:0 !important;
+}
+
+/* Naikkan bagian nama ke belakang gambar */
+.popular-title{
+  position:relative !important;
+  z-index:1 !important;
+
+  background:#002bff !important;
+
+  margin-top:-14px !important;
+
+  padding-top:18px !important;
+  padding-bottom:7px !important;
+
+  height:39px !important;
+}
+/* =========================================================
+   NAMA GAME + PROVIDER KHUSUS NEW/JACKPOT
+   Tidak mengganggu GAME POPULER
+========================================================= */
+
+.extra-track .popular-title{
+  position:relative !important;
+  z-index:1 !important;
+
+  height:40px !important;
+  margin-top:-10px !important;
+
+  padding:14px 3px 4px !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  background:#002bff !important;
+
+  line-height:1 !important;
+  overflow:hidden !important;
+}
+
+.extra-track .game-name{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  padding:0 4px;
+
+  color:#ffffff;
+
+  font-size:7.5px;
+  font-weight:1000;
+
+  text-align:center;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.extra-track .provider-name{
+  width:100%;
+
+  margin-top:3px;
+
+  color:#ff3026;
+
+  font-size:6px;
+  font-weight:1000;
+
+  text-align:center;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* =========================================================
+   GAME POPULER = MODEL TITLE NEW/JACKPOT
+   ringan: hanya CSS teks, tanpa efek tambahan
+========================================================= */
+#popularRows .popular-title{
+  position:relative !important;
+  z-index:1 !important;
+  height:40px !important;
+  margin-top:-10px !important;
+  padding:14px 3px 4px !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  background:#002bff !important;
+  line-height:1 !important;
+  overflow:hidden !important;
+}
+
+#popularRows .game-name{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  padding:0 3px !important;
+
+  color:#ffffff !important;
+  font-size:7.5px !important;
+  font-weight:1000 !important;
+  text-align:center !important;
+
+  white-space:nowrap !important;
+  overflow:hidden !important;
+}
+
+#popularRows .provider-name{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin-top:3px !important;
+
+  color:#ff3026 !important;
+  font-size:6px !important;
+  font-weight:1000 !important;
+  text-align:center !important;
+
+  white-space:nowrap !important;
+  overflow:hidden !important;
+}
 
 </style>
 </head>
@@ -2294,6 +3430,10 @@ button{
       GAME JP
     </div>
 
+    <div class="tab" id="tabPopular" role="button" tabindex="0">
+      GAME POPULER
+    </div>
+
     <div class="tab" id="tabJp" role="button" tabindex="0">
       BUKTI JP
     </div>
@@ -2310,6 +3450,60 @@ button{
     <div
       class="video-grid"
       id="videoGrid">
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       GAME POPULER - 20 GAME
+       4 BARIS, MASING-MASING 5 GAME
+       SETIAP BARIS BISA DIGESER KE KANAN
+  ======================================================== -->
+  <section class="popular-feed tab-content hidden" id="popularContent">
+
+    <div class="popular-page-head">
+      <span class="diamond">♦</span>
+      <span>Game Populer</span>
+      <span class="popular-head-line"></span>
+      <button class="extra-more popular-more" type="button" id="popularMoreBtn">
+        Lebih Banyak Game
+      </button>
+    </div>
+
+    <div id="popularRows"></div>
+
+    <!-- =====================================================
+         NEW GAMES + JACKPOT GAMES
+    ====================================================== -->
+    <div class="extra-games-wrap">
+
+      <section class="extra-games-section">
+        <div class="extra-games-head">
+          <span class="extra-icon">💎</span>
+          <span class="extra-title">NEW GAMES</span>
+          <span class="extra-line"></span>
+          <button class="extra-more" type="button" data-extra-more="new">
+            Lebih Banyak Game
+          </button>
+        </div>
+
+        <div class="extra-row" id="newGamesRow"></div>
+      </section>
+
+      <section class="extra-games-section">
+        <div class="extra-games-head">
+          <span class="extra-icon">♜</span>
+          <span class="extra-title">JACKPOT GAMES</span>
+          <span class="extra-line"></span>
+          <button class="extra-more" type="button" data-extra-more="jackpot">
+            Lebih Banyak Game
+          </button>
+        </div>
+
+        <div class="extra-row" id="jackpotGamesRow"></div>
+      </section>
+
     </div>
 
   </section>
@@ -2869,6 +4063,297 @@ const CONFIG = {
 
 
   /* =======================================================
+     GAME POPULER
+     TOTAL 20 GAME - TAMPIL 3 GAME SETIAP BARIS
+
+     CARA GANTI:
+     title : nama game
+     image : URL gambar game
+     playUrl : link tombol MAIN
+  ======================================================== */
+
+  popularGames: [
+
+    // GAME POPULER 1
+    {
+      title:"Mahjong Ways",
+      image:"https://img.viva88athenae.com/pg/images/mahjong-ways.png", // <-- TEMPEL URL GAMBAR GAME 1 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 2
+    {
+      title:"Mahjong Ways 2",
+      image:"https://img.viva88athenae.com/pg/images/mahjong-ways2.png", // <-- TEMPEL URL GAMBAR GAME 2 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 3
+    {
+      title:"Wild Bounty Showdown",
+      image:"https://img.viva88athenae.com/pg/images/wild-bounty-showdown.png", // <-- TEMPEL URL GAMBAR GAME 3 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 4
+    {
+      title:"Wild Bandito",
+      image:"https://img.viva88athenae.com/pg/images/wild-bandito.png", // <-- TEMPEL URL GAMBAR GAME 4 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 5
+    {
+      title:"Lucky Neko",
+      image:"https://img.viva88athenae.com/pg/images/lucky-neko.png", // <-- TEMPEL URL GAMBAR GAME 5 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 6
+    {
+      title:"Gold Panther Maxways",
+      image:"https://img.viva88athenae.com/sg/images/S-GP03_200x200.jpg", // <-- TEMPEL URL GAMBAR GAME 6 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 7
+    {
+      title:"Royale House",
+      image:"https://img.viva88athenae.com/sg/images/S-RH02_200x200.jpg", // <-- TEMPEL URL GAMBAR GAME 7 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 8
+    {
+      title:"Clash Of The Giants",
+      image:"https://img.viva88athenae.com/sg/images/S-CG02_200x200.jpg", // <-- TEMPEL URL GAMBAR GAME 8 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 9
+    {
+      title:"Royale Vegas",
+      image:"https://img.viva88athenae.com/sg/images/S-RV01_200x200.jpg", // <-- TEMPEL URL GAMBAR GAME 9 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 10
+    {
+      title:"Mahjong Riches",
+      image:"https://img.viva88athenae.com/sg/images/S-MR02_200x200.jpg", // <-- TEMPEL URL GAMBAR GAME 10 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 11
+    {
+      title:"Gates of Olympus POP",
+      image:"https://img.viva88athenae.com/pp/images/vs10olymppop.png", // <-- TEMPEL URL GAMBAR GAME 11 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 12
+    {
+      title:"Fury of Anubis",
+      image:"https://img.viva88athenae.com/pp/images/vs20wraanu.png", // <-- TEMPEL URL GAMBAR GAME 12 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 13
+    {
+      title:"Gates of Olympus 1000",
+      image:"https://img.viva88athenae.com/pp/images/vs20olympx.png", // <-- TEMPEL URL GAMBAR GAME 13 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 14
+    {
+      title:"Mahjong Wins 3",
+      image:"https://img.viva88athenae.com/pp/images/vswaysmajhng3p.png", // <-- TEMPEL URL GAMBAR GAME 14 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 15
+    {
+      title:"Ruins of Jötun",
+      image:"https://img.viva88athenae.com/pp/images/vs20rujbnx.png", // <-- TEMPEL URL GAMBAR GAME 15 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 16
+    {
+      title:"Money Tree",
+      image:"https://img.viva88athenae.com/pok/images/320.png", // <-- TEMPEL URL GAMBAR GAME 16 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 17
+    {
+      title:"Moonlight Angel",
+      image:"https://img.viva88athenae.com/pok/images/295.png", // <-- TEMPEL URL GAMBAR GAME 17 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 18
+    {
+      title:"Nemrut",
+      image:"https://img.viva88athenae.com/pok/images/215.png", // <-- TEMPEL URL GAMBAR GAME 18 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 19
+    {
+      title:"Hacivat & Karagos",
+      image:"https://img.viva88athenae.com/pok/images/150.png", // <-- TEMPEL URL GAMBAR GAME 19 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    // GAME POPULER 20
+    {
+      title:"Mega Joker",
+      image:"https://img.viva88athenae.com/pok/images/12.png", // <-- TEMPEL URL GAMBAR GAME 20 DI SINI
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    }
+  ],
+
+
+  /* =======================================================
+     NEW GAMES
+     Isi title / image / playUrl sesuai kebutuhan
+  ======================================================== */
+
+  newGames: [
+    {
+      title:"Starlight princes 1000 olympus",
+      image:"https://img.viva88athenae.com/pok/images/320.png",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 2",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 3",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 4",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 5",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 6",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 7",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 8",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 9",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"NEW GAME 10",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    }
+
+  ],
+
+
+  /* =======================================================
+     JACKPOT GAMES
+  ======================================================== */
+
+  jackpotGames: [
+    {
+      title:"JACKPOT GAME 1",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 2",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 3",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 4",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 5",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 6",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 7",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 8",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 9",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    },
+
+    {
+      title:"JACKPOT GAME 10",
+      image:"",
+      playUrl:"https://capital7.benihtotopro.one/?ref=DJBENIH"
+    }
+
+  ],
+
+
+  /* =======================================================
      VIDEO
   ======================================================== */
 
@@ -3088,34 +4573,832 @@ $("iconLivechat").src =
 
 
 /* =========================================================
-   TAB SYSTEM - DIBUAT / BUKTI JP
+   TAB SYSTEM - GAME JP / GAME POPULER / BUKTI JP
 ========================================================= */
+
 const tabCreated = $("tabCreated");
+const tabPopular = $("tabPopular");
 const tabJp = $("tabJp");
+
 const createdContent = $("createdContent");
+const popularContent = $("popularContent");
 const jpContent = $("jpContent");
 
 function switchTab(tab){
-  const showJp = tab === "jp";
-  tabCreated.classList.toggle("active", !showJp);
-  tabJp.classList.toggle("active", showJp);
-  createdContent.classList.toggle("hidden", showJp);
-  jpContent.classList.toggle("hidden", !showJp);
 
-  if(showJp){
+  const showCreated =
+    tab === "created";
+
+  const showPopular =
+    tab === "popular";
+
+  const showJp =
+    tab === "jp";
+
+
+  tabCreated.classList.toggle(
+    "active",
+    showCreated
+  );
+
+  tabPopular.classList.toggle(
+    "active",
+    showPopular
+  );
+
+  tabJp.classList.toggle(
+    "active",
+    showJp
+  );
+
+
+  createdContent.classList.toggle(
+    "hidden",
+    !showCreated
+  );
+
+  popularContent.classList.toggle(
+    "hidden",
+    !showPopular
+  );
+
+  jpContent.classList.toggle(
+    "hidden",
+    !showJp
+  );
+
+
+  /* Hentikan preview video kalau pindah dari GAME JP */
+  if(!showCreated){
     stopAllCardVideos();
   }
 }
 
-tabCreated.addEventListener("click", ()=>switchTab("created"));
-tabJp.addEventListener("click", ()=>switchTab("jp"));
 
-tabCreated.addEventListener("keydown", e=>{
-  if(e.key === "Enter" || e.key === " ") switchTab("created");
-});
-tabJp.addEventListener("keydown", e=>{
-  if(e.key === "Enter" || e.key === " ") switchTab("jp");
-});
+tabCreated.addEventListener(
+  "click",
+  ()=>switchTab("created")
+);
+
+tabPopular.addEventListener(
+  "click",
+  ()=>switchTab("popular")
+);
+
+tabJp.addEventListener(
+  "click",
+  ()=>switchTab("jp")
+);
+
+
+tabCreated.addEventListener(
+  "keydown",
+  e=>{
+    if(
+      e.key === "Enter" ||
+      e.key === " "
+    ){
+      switchTab("created");
+    }
+  }
+);
+
+tabPopular.addEventListener(
+  "keydown",
+  e=>{
+    if(
+      e.key === "Enter" ||
+      e.key === " "
+    ){
+      switchTab("popular");
+    }
+  }
+);
+
+tabJp.addEventListener(
+  "keydown",
+  e=>{
+    if(
+      e.key === "Enter" ||
+      e.key === " "
+    ){
+      switchTab("jp");
+    }
+  }
+);
+
+
+/* =========================================================
+   RENDER GAME POPULER
+   20 GAME -> 2 BARIS
+   MASING-MASING 10 GAME
+   SETIAP BARIS BISA DIGESER KIRI / KANAN
+========================================================= */
+
+/* Nama panjang dipotong sekali saat render: ringan untuk HP */
+function shortGameTitle(title,maxLength=16){
+  const text = String(title || "").trim();
+  return text.length > maxLength
+    ? text.slice(0,maxLength).trimEnd() + "..."
+    : text;
+}
+
+/* Provider GAME POPULER otomatis dari folder URL gambar */
+function getPopularProvider(imageUrl){
+  const url = String(imageUrl || "").toLowerCase();
+
+  if(url.includes("/pg/"))  return "PG SOFT";
+  if(url.includes("/sg/"))  return "SPADE GAMING";
+  if(url.includes("/pp/"))  return "PRAGMATIC PLAY";
+  if(url.includes("/pok/")) return "MEGA WIN";
+
+  return "";
+}
+
+
+const popularRows =
+  $("popularRows");
+
+const popularItems =
+  (CONFIG.popularGames || [])
+    .slice(0,20);
+
+
+for(
+  let rowIndex = 0;
+  rowIndex < popularItems.length;
+  rowIndex += 10
+){
+
+  const rowItems =
+    popularItems.slice(
+      rowIndex,
+      rowIndex + 10
+    );
+
+
+  const section =
+    document.createElement("section");
+
+  section.className =
+    "popular-section";
+
+
+  section.innerHTML = `
+
+    <div class="popular-rail left">
+      <button
+        class="popular-arrow left"
+        type="button"
+        aria-label="Geser kiri"
+      >‹</button>
+    </div>
+
+
+    <div class="popular-track-shell">
+
+      <div class="popular-track"></div>
+
+    </div>
+
+
+    <div class="popular-rail right">
+      <button
+        class="popular-arrow right"
+        type="button"
+        aria-label="Geser kanan"
+      >›</button>
+    </div>
+
+  `;
+
+
+  const track =
+    section.querySelector(
+      ".popular-track"
+    );
+
+
+  const leftArrow =
+    section.querySelector(
+      ".popular-arrow.left"
+    );
+
+
+  const rightArrow =
+    section.querySelector(
+      ".popular-arrow.right"
+    );
+
+
+  rowItems.forEach(
+    (item,itemIndex)=>{
+
+      const realIndex =
+        rowIndex + itemIndex;
+
+
+      const card =
+        document.createElement(
+          "article"
+        );
+
+
+      card.className =
+        "popular-card";
+
+
+      const hasImage =
+        item &&
+        typeof item.image === "string" &&
+        item.image.trim() !== "";
+
+
+      const imageHTML =
+        hasImage
+          ? `
+            <img
+              src="${item.image}"
+              alt="${escapeHTML(
+                item.title ||
+                `Game populer ${realIndex+1}`
+              )}"
+              loading="lazy"
+              decoding="async"
+            >
+          `
+          : `
+            <div class="popular-placeholder">
+
+              <strong>
+                ${realIndex+1}
+              </strong>
+
+              <small>
+                ISI URL
+              </small>
+
+            </div>
+          `;
+
+
+      card.innerHTML = `
+        <div class="popular-image">
+
+          ${imageHTML}
+
+          <a
+            class="popular-main"
+            href="${
+              item.playUrl ||
+              CONFIG.links.login
+            }"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fas fa-play"></i>
+            MAIN
+          </a>
+
+        </div>
+
+        <div class="popular-title">
+
+          <div class="game-name">
+            ${escapeHTML(
+              shortGameTitle(
+                item.title || `GAME POPULER ${realIndex+1}`
+              )
+            )}
+          </div>
+
+          <div class="provider-name">
+            ${escapeHTML(
+              getPopularProvider(item.image)
+            )}
+          </div>
+
+        </div>
+      `;
+
+
+      /* Klik gambar untuk mengaktifkan tombol MAIN */
+      const imageBox =
+        card.querySelector(
+          ".popular-image"
+        );
+
+      imageBox.addEventListener(
+        "click",
+        function(event){
+
+          /* Kalau yang diklik tombol MAIN, jangan toggle */
+          if(
+            event.target.closest(
+              ".popular-main"
+            )
+          ){
+            return;
+          }
+
+
+          const alreadyActive =
+            card.classList.contains(
+              "active"
+            );
+
+
+          /* Matikan semua kartu lain */
+          document
+            .querySelectorAll(
+              ".popular-card.active"
+            )
+            .forEach(function(otherCard){
+
+              if(otherCard !== card){
+                otherCard.classList.remove(
+                  "active"
+                );
+              }
+
+            });
+
+
+          /* Klik ulang = boleh menutup lagi */
+          card.classList.toggle(
+            "active",
+            !alreadyActive
+          );
+
+        }
+      );
+
+
+      track.appendChild(card);
+
+    }
+  );
+
+
+  const getStep = ()=>{
+
+    const card =
+      track.querySelector(
+        ".popular-card"
+      );
+
+    if(!card){
+      return 100;
+    }
+
+
+    const style =
+      getComputedStyle(track);
+
+
+    const gap =
+      parseFloat(
+        style.columnGap ||
+        style.gap ||
+        0
+      );
+
+
+    return (
+      card.getBoundingClientRect().width +
+      gap
+    );
+
+  };
+
+
+  leftArrow.addEventListener(
+    "click",
+    ()=>{
+
+      track.scrollBy({
+        left:-(getStep() * 3),
+        behavior:"smooth"
+      });
+
+    }
+  );
+
+
+  rightArrow.addEventListener(
+    "click",
+    ()=>{
+
+      track.scrollBy({
+        left:(getStep() * 3),
+        behavior:"smooth"
+      });
+
+    }
+  );
+
+
+  popularRows.appendChild(
+    section
+  );
+
+}
+
+
+
+/* =========================================================
+   RENDER NEW GAMES / JACKPOT GAMES
+========================================================= */
+
+function renderExtraGames(
+  targetId,
+  items,
+  providerName
+){
+
+  const host =
+    $(targetId);
+
+  if(!host){
+    return;
+  }
+
+
+  const shell =
+    document.createElement(
+      "div"
+    );
+
+  shell.className =
+    "extra-track-shell";
+
+
+  const track =
+    document.createElement(
+      "div"
+    );
+
+  track.className =
+    "extra-track";
+
+
+  const railLeft =
+    document.createElement(
+      "div"
+    );
+
+  railLeft.className =
+    "extra-rail left";
+
+
+  const leftBtn =
+    document.createElement(
+      "button"
+    );
+
+  leftBtn.className =
+    "extra-arrow left";
+
+  leftBtn.type =
+    "button";
+
+  leftBtn.setAttribute(
+    "aria-label",
+    "Geser kiri"
+  );
+
+  leftBtn.textContent =
+    "‹";
+
+
+  const railRight =
+    document.createElement(
+      "div"
+    );
+
+  railRight.className =
+    "extra-rail right";
+
+
+  const rightBtn =
+    document.createElement(
+      "button"
+    );
+
+  rightBtn.className =
+    "extra-arrow right";
+
+  rightBtn.type =
+    "button";
+
+  rightBtn.setAttribute(
+    "aria-label",
+    "Geser kanan"
+  );
+
+  rightBtn.textContent =
+    "›";
+
+
+  railLeft.appendChild(
+    leftBtn
+  );
+
+  railRight.appendChild(
+    rightBtn
+  );
+
+
+  (items || [])
+    .slice(0,10)
+    .forEach(
+      function(item,index){
+
+        const card =
+          document.createElement(
+            "article"
+          );
+
+        card.className =
+          "popular-card";
+
+
+        const hasImage =
+          item &&
+          typeof item.image === "string" &&
+          item.image.trim() !== "";
+
+
+        const imageHTML =
+          hasImage
+            ? `
+              <img
+                src="${item.image}"
+                alt="${escapeHTML(
+                  item.title ||
+                  `Game ${index+1}`
+                )}"
+                loading="lazy"
+                decoding="async"
+              >
+            `
+            : `
+              <div class="popular-placeholder">
+                <strong>${index+1}</strong>
+                <small>ISI URL</small>
+              </div>
+            `;
+
+
+        card.innerHTML = `
+          <div class="popular-image">
+
+            ${imageHTML}
+
+            <a
+              class="popular-main"
+              href="${
+                item.playUrl ||
+                CONFIG.links.login
+              }"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-play"></i>
+              MAIN
+            </a>
+
+          </div>
+
+          <div class="popular-title">
+
+            <div class="game-name">
+              ${escapeHTML(
+                shortGameTitle(
+                  item.title || `GAME ${index+1}`
+                )
+              )}
+            </div>
+
+            <div class="provider-name">
+              ${escapeHTML(
+                providerName || ""
+              )}
+            </div>
+
+          </div>
+        `;
+
+
+        const imageBox =
+          card.querySelector(
+            ".popular-image"
+          );
+
+
+        imageBox.addEventListener(
+          "click",
+          function(event){
+
+            if(
+              event.target.closest(
+                ".popular-main"
+              )
+            ){
+              return;
+            }
+
+
+            const active =
+              card.classList.contains(
+                "active"
+              );
+
+
+            document
+              .querySelectorAll(
+                ".popular-card.active"
+              )
+              .forEach(
+                function(otherCard){
+
+                  if(
+                    otherCard !== card
+                  ){
+                    otherCard
+                      .classList
+                      .remove(
+                        "active"
+                      );
+                  }
+
+                }
+              );
+
+
+            card.classList.toggle(
+              "active",
+              !active
+            );
+
+          }
+        );
+
+
+        track.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+  shell.appendChild(
+    track
+  );
+
+  host.appendChild(
+    railLeft
+  );
+
+  host.appendChild(
+    shell
+  );
+
+  host.appendChild(
+    railRight
+  );
+
+
+  host.style.position =
+    "relative";
+
+
+  const getStep = ()=>{
+
+    const card =
+      track.querySelector(
+        ".popular-card"
+      );
+
+    if(!card){
+      return 100;
+    }
+
+    const style =
+      getComputedStyle(
+        track
+      );
+
+    const gap =
+      parseFloat(
+        style.columnGap ||
+        style.gap ||
+        0
+      );
+
+    return (
+      card
+        .getBoundingClientRect()
+        .width +
+      gap
+    );
+
+  };
+
+
+  leftBtn.addEventListener(
+    "click",
+    function(){
+
+      track.scrollBy({
+        left:
+          -(getStep() * 3),
+
+        behavior:
+          "smooth"
+      });
+
+    }
+  );
+
+
+  rightBtn.addEventListener(
+    "click",
+    function(){
+
+      track.scrollBy({
+        left:
+          getStep() * 3,
+
+        behavior:
+          "smooth"
+      });
+
+    }
+  );
+
+}
+
+
+renderExtraGames(
+  "newGamesRow",
+  CONFIG.newGames,
+  "PG SOFT"
+);
+
+
+renderExtraGames(
+  "jackpotGamesRow",
+  CONFIG.jackpotGames,
+  "PG SOFT"
+);
+
+
+/* Tombol 'Lebih Banyak Game' sementara menggulir track ke kanan */
+document
+  .querySelectorAll(
+    "[data-extra-more]"
+  )
+  .forEach(
+    function(button){
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          const section =
+            button.closest(
+              ".extra-games-section"
+            );
+
+          const track =
+            section
+              ? section.querySelector(
+                  ".extra-track"
+                )
+              : null;
+
+          if(track){
+
+            track.scrollBy({
+              left:
+                track.clientWidth,
+
+              behavior:
+                "smooth"
+            });
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+
 
 /* =========================================================
    BUKTI JP TERBARU - BAGIAN PALING ATAS
@@ -4491,6 +6774,50 @@ function showToast(text){
       2600
     );
 
+}
+
+
+/* Klik di luar kartu game populer = tutup tombol MAIN */
+document.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target.closest(
+        ".popular-card"
+      )
+    ){
+      return;
+    }
+
+    document
+      .querySelectorAll(
+        ".popular-card.active"
+      )
+      .forEach(function(card){
+
+        card.classList.remove(
+          "active"
+        );
+
+      });
+
+  }
+);
+
+
+/* Tombol Lebih Banyak Game bagian atas */
+const popularMoreBtn = $("popularMoreBtn");
+if(popularMoreBtn){
+  popularMoreBtn.addEventListener("click", function(){
+    const firstTrack = document.querySelector("#popularRows .popular-track");
+    if(firstTrack){
+      firstTrack.scrollBy({
+        left:firstTrack.clientWidth,
+        behavior:"smooth"
+      });
+    }
+  });
 }
 
 </script>
