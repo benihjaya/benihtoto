@@ -8,6 +8,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -3239,12 +3240,180 @@ border:4px solid #002bff;
 .topbar{
     display:none !important;
 }
+/* =========================================================
+   POPUP GAMBAR AWAL
+========================================================= */
+
+.start-popup{
+  position:fixed;
+  inset:0;
+
+  z-index:99999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px;
+
+  background:rgba(0,0,0,.82);
+}
+
+.start-popup-box{
+  width:min(82vw,380px);
+  max-height:90vh;
+
+  display:flex;
+  flex-direction:column;
+
+  animation:popupMasuk .30s ease;
+}
+
+.start-popup-img{
+  width:100%;
+  height:auto;
+
+  display:block;
+
+  border-radius:10px;
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.55);
+}
+
+.start-popup-close-btn{
+  width:100%;
+  height:42px;
+
+  margin-top:7px;
+
+  border:none;
+  border-radius:5px;
+
+  background:#2694f5;
+  color:#ffffff;
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:.3px;
+
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+.start-popup-close-btn:hover{
+  background:#1685e8;
+}
+
+.start-popup-close-btn:active{
+  transform:scale(.98);
+}
+
+@keyframes popupMasuk{
+
+  from{
+    opacity:0;
+    transform:scale(.88);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+
+}
+
+
+/* KHUSUS HP */
+
+@media (max-width:699px){
+
+  .start-popup{
+    padding:16px;
+  }
+
+  .start-popup-box{
+    width:min(84vw,330px);
+  }
+
+  .start-popup-close-btn{
+    height:40px;
+    font-size:11px;
+  }
+
+}
+/* ===============================
+   ANIMASI TUTUP POPUP
+================================ */
+
+.start-popup.closing{
+  pointer-events:none;
+  animation:popupOverlayHilang .8s ease forwards;
+}
+
+.start-popup.closing .start-popup-box{
+  animation:popupPutarTutup .8s ease-in forwards !important;
+}
+
+@keyframes popupPutarTutup{
+  0%{
+    opacity:1;
+    transform:rotate(0deg) scale(1);
+  }
+
+  100%{
+    opacity:0;
+    transform:rotate(360deg) scale(.15);
+  }
+}
+
+@keyframes popupOverlayHilang{
+  0%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+  }
+}
 
 </style>
 </head>
 
 
 <body>
+  <!-- =====================================================
+     POPUP GAMBAR SAAT PERTAMA BUKA
+====================================================== -->
+
+<div class="start-popup" id="startPopup">
+
+  <div class="start-popup-box">
+
+    <img
+      class="start-popup-img"
+      src="https://cdn.phototourl.com/free/2026-09-08-9f0fdc17-3592-42f7-a1bd-e6c875ed0395.png"
+      alt="Promo"
+    >
+
+    <button
+      class="start-popup-close-btn"
+      id="startPopupClose"
+      type="button"
+    >
+      KLIK UNTUK MENUTUP
+    </button>
+
+  </div>
+
+</div>
 
 
 <!-- =========================================================
@@ -6862,6 +7031,28 @@ document.addEventListener("keydown", function(e) {
 
 document.addEventListener("contextmenu", function(e) {
   e.preventDefault();
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const popup = document.getElementById("startPopup");
+  const closeBtn = document.getElementById("startPopupClose");
+
+  if (!popup || !closeBtn) return;
+
+  closeBtn.addEventListener("click", function () {
+
+    if (popup.classList.contains("closing")) return;
+
+    popup.classList.add("closing");
+
+    setTimeout(function () {
+      popup.style.display = "none";
+    }, 800);
+
+  });
+
 });
 </script>
 
